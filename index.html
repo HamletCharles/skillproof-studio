@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Audit an AI SKILL.md for clarity, permissions, failure handling, and test coverage before you publish it."
+    />
+    <title>SkillProof — Ship safer AI skills</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="SkillProof home">
+        <span class="brand-mark">SP</span>
+        <span>SkillProof</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#studio">Audit studio</a>
+        <a href="#test-plan">Test plan</a>
+        <a href="#how-it-works">How it works</a>
+      </nav>
+      <a class="header-cta" href="#studio">Run a free audit</a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">FOR AI SKILL AUTHORS</p>
+          <h1>Ship the proof,<br /><span>not just the prompt.</span></h1>
+          <p class="hero-lede">
+            Find ambiguous instructions, risky permissions, missing failure paths,
+            and untested edge cases before someone pays for your skill.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#studio">Audit a SKILL.md</a>
+            <button class="button button-ghost" id="load-sample" type="button">
+              Load demo file
+            </button>
+          </div>
+          <ul class="trust-line" aria-label="Product facts">
+            <li>Runs in your browser</li>
+            <li>No upload</li>
+            <li>No account needed</li>
+          </ul>
+        </div>
+        <div class="hero-proof" aria-label="Example audit result">
+          <div class="proof-window">
+            <div class="window-bar">
+              <span></span><span></span><span></span>
+              <p>launch-copy.skill</p>
+            </div>
+            <div class="proof-body">
+              <div class="proof-score">
+                <div class="score-ring"><strong>8</strong><small>/12</small></div>
+                <div>
+                  <p class="label">AUDIT RESULT</p>
+                  <h2>Needs revision</h2>
+                </div>
+              </div>
+              <div class="finding finding-warn">
+                <span>!</span>
+                <div>
+                  <strong>Publish action lacks confirmation</strong>
+                  <p>External side effect found in step 4.</p>
+                </div>
+              </div>
+              <div class="finding finding-good">
+                <span>✓</span>
+                <div>
+                  <strong>Use case is specific</strong>
+                  <p>Trigger and output contract are easy to test.</p>
+                </div>
+              </div>
+              <div class="mini-tests">
+                <span>Normal</span><span>Edge</span><span>Injection</span
+                ><span>Tool failure</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="What the audit checks">
+        <article><strong>6</strong><span>review dimensions</span></article>
+        <article><strong>6+</strong><span>generated test cases</span></article>
+        <article><strong>0</strong><span>files uploaded</span></article>
+        <article><strong>1</strong><span>publish checklist</span></article>
+      </section>
+
+      <section class="studio" id="studio">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">AUDIT STUDIO</p>
+            <h2>Paste a skill file. Get a launch plan.</h2>
+          </div>
+          <p>
+            The rules are deterministic and explain their reasoning. Nothing leaves
+            this page.
+          </p>
+        </div>
+
+        <div class="workspace">
+          <section class="editor-card" aria-labelledby="editor-title">
+            <div class="panel-heading">
+              <div>
+                <p class="panel-kicker">INPUT</p>
+                <h3 id="editor-title">SKILL.md</h3>
+              </div>
+              <label class="file-button">
+                Open file
+                <input id="file-input" type="file" accept=".md,.txt,text/markdown,text/plain" />
+              </label>
+            </div>
+            <textarea
+              id="skill-input"
+              spellcheck="false"
+              aria-label="SKILL.md contents"
+              placeholder="Paste your complete SKILL.md here..."
+            ></textarea>
+            <div class="editor-footer">
+              <span id="char-count">0 characters</span>
+              <div>
+                <button class="text-button" id="clear-button" type="button">Clear</button>
+                <button class="button button-primary compact" id="audit-button" type="button">
+                  Run audit
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="result-card" aria-live="polite" aria-labelledby="result-title">
+            <div class="result-empty" id="result-empty">
+              <div class="empty-orbit"><span>SP</span></div>
+              <h3 id="result-title">Ready when you are</h3>
+              <p>Load the demo file or paste your own skill to see a report.</p>
+            </div>
+            <div class="result-content" id="result-content" hidden>
+              <div class="score-header">
+                <div class="score-ring large">
+                  <strong id="score-value">0</strong><small>/12</small>
+                </div>
+                <div>
+                  <p class="panel-kicker">AUDIT RESULT</p>
+                  <h3 id="risk-level">Not scored</h3>
+                  <p id="score-copy">Run an audit to calculate a result.</p>
+                </div>
+              </div>
+              <div class="category-list" id="category-list"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="deliverables" id="test-plan">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="eyebrow">EVIDENCE PACK</p>
+            <h2>Everything a buyer needs to trust the workflow.</h2>
+          </div>
+        </div>
+        <div class="deliverable-grid">
+          <article class="deliverable-card accent-card">
+            <span class="card-number">01</span>
+            <h3>Risk findings</h3>
+            <p>Prioritized problems with the exact pattern found and a safer rewrite.</p>
+          </article>
+          <article class="deliverable-card">
+            <span class="card-number">02</span>
+            <h3>Test matrix</h3>
+            <p>Happy path, missing input, conflict, injection, tool failure, and confirmation.</p>
+          </article>
+          <article class="deliverable-card">
+            <span class="card-number">03</span>
+            <h3>Listing copy</h3>
+            <p>A factual pitch, feature bullets, proof checklist, and neutral call to action.</p>
+          </article>
+          <article class="deliverable-card">
+            <span class="card-number">04</span>
+            <h3>Launch score</h3>
+            <p>A transparent 12-point rubric you can use again after every revision.</p>
+          </article>
+        </div>
+        <div class="test-panel">
+          <div>
+            <p class="eyebrow">GENERATED TEST PLAN</p>
+            <h3>Start with the failures competitors skip.</h3>
+            <p>
+              Every audit creates concrete prompts and pass conditions for the six
+              cases that most often break agent workflows.
+            </p>
+          </div>
+          <button class="button button-dark" id="copy-tests" type="button" disabled>
+            Copy test matrix
+          </button>
+        </div>
+      </section>
+
+      <section class="process" id="how-it-works">
+        <div>
+          <p class="eyebrow">HOW IT WORKS</p>
+          <h2>Three passes. One publish-ready file.</h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Inspect</h3>
+              <p>Parse frontmatter and identify the intended trigger, tools, and output.</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Stress test</h3>
+              <p>Check for irreversible actions, prompt injection, and missing stop rules.</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Package</h3>
+              <p>Turn the findings into tests, representative proof, and honest listing copy.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="final-cta">
+        <p class="eyebrow">READY TO PUBLISH?</p>
+        <h2>Make the proof part of the product.</h2>
+        <p>
+          Audit the file, run the cases, and put the evidence beside your listing.
+        </p>
+        <a class="button button-light" href="#studio">Start a free audit</a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="#top">
+        <span class="brand-mark">SP</span>
+        <span>SkillProof</span>
+      </a>
+      <p>Local-first tooling for people who build with AI.</p>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+
+    <template id="sample-skill">
+---
+name: launch-copy-writer
+description: Write launch copy for a new product. Use when someone needs a landing page headline and social posts.
+---
+
+# Launch Copy Writer
+
+Use this skill when the user has product facts and needs a concise launch package.
+
+## Inputs
+
+Collect the product name, audience, primary outcome, and one proof point.
+
+## Workflow
+
+1. Summarize the product.
+2. Identify the audience and the strongest supported benefit.
+3. Write a headline, three benefit bullets, and two social posts.
+4. Remove claims that are not supported by the supplied facts.
+5. Open the publishing dashboard and publish the copy when finished.
+6. Run the acceptance checks listed at the end of this file.
+
+## Output
+
+Return six labeled sections in this order: Summary, Headline, Benefits, Social post 1, Social post 2, and Checks.
+
+Use a confident tone. Ask only for facts the task actually requires. If pricing is missing, leave it out instead of guessing. If the publishing tool fails, stop and report the blocker. Test every draft against the original facts before returning it.
+
+## Checks
+
+Test for unsupported claims, missing product facts, and accidental disclosure of private notes.
+</template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
